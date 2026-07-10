@@ -1,0 +1,143 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mörners — Pizza · Sallad · Kebab</title>
+<meta name="description" content="Mörners öppnar inom kort. Nybakad pizza, färsk sallad och kebab. Håll utkik, snart är vi igång.">
+<meta name="theme-color" content="#001739">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mörners — Pizza · Sallad · Kebab">
+<meta property="og:description" content="Vi öppnar inom kort. Håll utkik, snart är vi igång.">
+<meta property="og:image" content="img/morners-logo.jpg">
+<meta property="og:site_name" content="Mörners">
+<link rel="icon" href="img/morners-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#001739;
+    --navy-soft:#062044;
+    --orange:#ff7d03;
+    --ink:#f4efe6;        /* warm near-white for headline */
+    --muted:#9cb0cc;      /* navy-tinted, never flat gray */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--navy);
+    color:var(--ink);
+    font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:clamp(24px,6vw,64px);
+    /* subtle depth: faint lift behind the mark, no AI glow */
+    background-image:radial-gradient(120% 90% at 50% 38%,#062247 0%,var(--navy) 62%);
+    overflow:hidden;
+  }
+  .stage{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:clamp(22px,4vw,38px);
+    max-width:640px;
+    width:100%;
+  }
+  .logo{
+    width:clamp(230px,62vw,470px);
+    height:auto;
+    /* logo art sits on the same navy, so it reads as floating type */
+    filter:drop-shadow(0 18px 40px rgba(0,0,0,.45));
+    opacity:0;
+    animation:rise 900ms cubic-bezier(.25,1,.5,1) 120ms forwards;
+  }
+  .copy{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .rule{
+    width:56px;height:3px;border-radius:2px;background:var(--orange);
+    opacity:0;transform-origin:center;
+    animation:grow 700ms cubic-bezier(.25,1,.5,1) 620ms forwards;
+  }
+  h1{
+    font-weight:700;
+    font-size:clamp(1.5rem,4.6vw,2.35rem);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    line-height:1.12;
+    opacity:0;
+    animation:rise 820ms cubic-bezier(.25,1,.5,1) 480ms forwards;
+  }
+  p.lead{
+    font-weight:500;
+    font-size:clamp(1rem,2.6vw,1.15rem);
+    line-height:1.6;
+    color:var(--muted);
+    max-width:34ch;
+    opacity:0;
+    animation:rise 820ms cubic-bezier(.25,1,.5,1) 700ms forwards;
+  }
+  .contact{
+    position:fixed;
+    left:0;right:0;bottom:clamp(20px,4vh,40px);
+    display:flex;justify-content:center;
+    opacity:0;
+    animation:fade 900ms ease-out 1100ms forwards;
+  }
+  .contact a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.9rem;
+    letter-spacing:.03em;
+    display:inline-flex;align-items:center;gap:9px;
+    padding:9px 16px;border-radius:999px;
+    border:1px solid rgba(156,176,204,.22);
+    transition:color .25s ease,border-color .25s ease,background .25s ease;
+  }
+  .contact a:hover,.contact a:focus-visible{
+    color:var(--orange);
+    border-color:rgba(255,125,3,.5);
+    background:rgba(255,125,3,.06);
+    outline:none;
+  }
+  .contact a strong{color:var(--ink);font-weight:600}
+  .contact a:hover strong{color:var(--orange)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes grow{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  @media (prefers-reduced-motion:reduce){
+    .logo,.rule,h1,p.lead,.contact{animation:none;opacity:1;transform:none}
+  }
+</style>
+
+<main class="stage">
+  <img class="logo" src="img/morners-logo.jpg" alt="Mörners — Pizza, Sallad, Kebab" width="1254" height="1254">
+  <div class="copy">
+    <span class="rule" aria-hidden="true"></span>
+    <h1>Vi öppnar inom kort</h1>
+    <p class="lead">Nybakad pizza, färsk sallad och riktig kebab. Håll utkik, snart är vi igång.</p>
+  </div>
+</main>
+
+<div class="contact">
+  <a href="tel:+46735664428">Frågor? Ring <strong>073 566 44 28</strong></a>
+</div>
+
+<script>
+/* KK granska-sync: scrolla mjukt till sektion vid postMessage (osynligt för besökare) */
+(function(){
+  var MAP={hero:["#hero","header",".hero","main"],om:["#om"],meny:["#meny"],
+    bilder:["#bilder"],kontakt:["#kontakt",".contact"],stil:["body"],ovrigt:["body"]};
+  window.addEventListener("message",function(e){
+    var d=e.data||{}; if(d.type!=="granska-scroll") return;
+    var sels=MAP[d.section]||[]; for(var i=0;i<sels.length;i++){
+      var el=document.querySelector(sels[i]);
+      if(el){el.scrollIntoView({behavior:"smooth",block:"start"}); break;}
+    }
+  },false);
+})();
+</script>
