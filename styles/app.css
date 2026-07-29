@@ -389,3 +389,6 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 
 /* mobilbar: enbart bestäl­lning */
 .mobilebar .btn--primary { flex: 1; }
+/* mattrion ingår i den sammanhängande dimman */
+.foodtrio { position: relative; overflow: hidden; }
+.foodtrio > .wrap { position: relative; z-index: 1; }
