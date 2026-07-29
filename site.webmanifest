@@ -1,0 +1,11 @@
+{
+  "name": "Mörners — Pizza, Sallad & Kebab",
+  "short_name": "Mörners",
+  "description": "Nybakad pizza, färsk sallad och riktig kebab i Växjö.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#001739",
+  "theme_color": "#001739",
+  "lang": "sv-SE",
+  "icons": [{ "src": "/assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

@@ -1,0 +1,29 @@
+# Mörners
+
+## Beskrivning
+Mörners är en pizzeria i Växjö som serverar nybakad pizza, färska sallader och riktig kebab. Beställning sker online för avhämtning via Qopla, eller per telefon.
+
+## Kontakt & plats
+- Adress: Gulli Petrinis Väg 24, 352 20 Växjö
+- Telefon: 073-566 44 28
+- Öppettider: alla dagar 10:00–21:00
+- Beställ online: https://qopla.com/restaurant/morners/qEQ3g3j42O/order
+- Webb: https://morners.se
+
+## Meny (urval, priser i SEK)
+- Pizzor: Margherita 125, Vesuvio 125, Hawaii 125, Capricciosa 125, Calzone 125
+- Pizzor (grupp 2): Al Tonno, Bolognese, Salami, Palumbo, La Maffia, Africana — 130
+- Mixed & Seafood / Vegetariska: Deluxe, Quattro, Kreta, Parma, Mexicana, Peperoni, New York, Havet, Marinara, Vegetariana, Al Italia, Sommarpizza, Fyra Ostar, Avokadopizza — 140
+- Fläskfilé & Oxfilé samt kebab-/kycklingpizzor: Black & White, Husets Special, Småland, Gorgonzola, Biblos, Palermo, Ciao Ciao, Kebabpizza, Mörners (husets: skinka, bacon, kebabkött, kebabsås), Greken, Gladiator, Kycklingpizza, Chicken, Bella — 145
+- Pommespizzor: Lakers Special, Hot Chili, Tre Kronor, Polo Special — 150
+- Kebab & kyckling: Kebabrulle 130, Vikingrulle 140, Kebabtallrik 130, Kebab i bröd 130, Kycklingrulle 130, Kycklingtallrik 130
+- Vegetariskt: Falafelrulle, Falafeltallrik, Halloumirulle, Halloumitallrik — 130
+- Sallader: Kebab-, Kycklings-, Räk-, Halloumi-, Falafel-, Tonfisksallad — 130
+- Tillbehör: Pommestallrik, Nybakat vitlöksbröd, Chili Cheese 6 st, Nuggets 6 st — 45
+
+## Sidor
+- https://morners.se/ — startsida (koncept, urval ur menyn, beställning, hitta hit)
+- https://morners.se/meny.html — hela menyn med priser
+
+## Om webbplatsen
+Byggd av SynsNu Media (https://www.synsnumedia.se/).
