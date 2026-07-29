@@ -7,5 +7,17 @@
   "background_color": "#001739",
   "theme_color": "#001739",
   "lang": "sv-SE",
-  "icons": [{ "src": "/assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "icons": [
+    {
+      "src": "/assets/icons/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
 }

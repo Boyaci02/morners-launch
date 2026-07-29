@@ -7,7 +7,7 @@ Mörners är en pizzeria i Växjö som serverar nybakad pizza, färska sallader 
 - Adress: Gulli Petrinis Väg 24, 352 20 Växjö
 - Öppettider: alla dagar 10:00–21:00
 - Beställ online: https://qopla.com/restaurant/morners/qEQ3g3j42O/order
-- Webb: https://morners.se
+- Webb: https://morners-launch.vercel.app
 
 ## Meny (urval, priser i SEK)
 - Pizzor: Margherita 125, Vesuvio 125, Hawaii 125, Capricciosa 125, Calzone 125
@@ -21,8 +21,8 @@ Mörners är en pizzeria i Växjö som serverar nybakad pizza, färska sallader 
 - Tillbehör: Pommestallrik, Nybakat vitlöksbröd, Chili Cheese 6 st, Nuggets 6 st — 45
 
 ## Sidor
-- https://morners.se/ — startsida (koncept, urval ur menyn, beställning, hitta hit)
-- https://morners.se/meny.html — hela menyn med priser
+- https://morners-launch.vercel.app/ — startsida (koncept, urval ur menyn, beställning, hitta hit)
+- https://morners-launch.vercel.app/meny.html — hela menyn med priser
 
 ## Om webbplatsen
 Byggd av SynsNu Media (https://www.synsnumedia.se/).

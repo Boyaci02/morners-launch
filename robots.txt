@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://morners.se/sitemap.xml
+Sitemap: https://morners-launch.vercel.app/sitemap.xml
