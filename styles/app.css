@@ -291,3 +291,97 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 
 /* meny-snippet: se-mer-knapp */
 .menu__more { display: flex; justify-content: center; margin-top: clamp(28px, 3.5vw, 44px); }
+
+/* ============================================================
+   MATKORT v2 — bild + kortkropp (funkar lika bra i mobil)
+   ============================================================ */
+.foodtrio__grid { align-items: stretch; }
+.food { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: 12px; overflow: hidden; aspect-ratio: auto;
+  box-shadow: 0 20px 44px -30px rgba(16, 32, 63, 0.45);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
+.food:hover { transform: translateY(-6px); border-color: rgba(255, 125, 3, 0.4);
+  box-shadow: 0 30px 56px -30px rgba(16, 32, 63, 0.55); }
+.food__img { position: relative; aspect-ratio: 5 / 4; overflow: hidden; }
+.food__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.food:hover .food__img img { transform: scale(1.05); }
+.food__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 62%, rgba(0, 23, 57, 0.35)); }
+.food__from { position: absolute; right: 12px; top: 12px; z-index: 1;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #14100a; background: var(--orange); padding: 5px 11px; border-radius: 20px; }
+.food__body { padding: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 24px) clamp(20px, 2.2vw, 28px); }
+.food__body h3 { font-size: clamp(1.15rem, 1.7vw, 1.4rem); color: var(--ink); }
+.food__body h3::after { content: ""; display: block; width: 30px; height: 3px; background: var(--orange); border-radius: 2px; margin: 10px 0 12px; }
+.food__body p { color: var(--ink-soft); font-size: var(--fs-sm); line-height: 1.6; }
+
+/* ============================================================
+   MENY v2 — mer kontrast & detalj
+   ============================================================ */
+.fogfx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.menysec, .orderband { position: relative; overflow: hidden; }
+.menysec > .wrap, .orderband > .wrap { position: relative; z-index: 1; }
+
+.menukort { background: rgba(255, 253, 248, 0.94); backdrop-filter: blur(2px);
+  border-color: rgba(16, 32, 63, 0.14); box-shadow: 0 26px 60px -38px rgba(16, 32, 63, 0.55); }
+.menu__cat { display: flex; align-items: baseline; gap: 12px; font-size: 1.05rem; letter-spacing: 0.14em;
+  color: var(--ink); margin: var(--s-8) 0 var(--s-5); }
+.menu__cat::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, var(--orange), rgba(255,125,3,.12)); border-radius: 2px; }
+.mrow { grid-template-columns: 1fr auto; row-gap: 2px; padding-block: 13px; border-bottom: 1px solid rgba(16, 32, 63, 0.10); }
+.mrow__t { font-size: 1.06rem; font-weight: 700; color: var(--ink); white-space: normal; letter-spacing: 0.005em; }
+.mrow__d { grid-column: 1; font-size: 0.88rem; color: var(--ink-soft); white-space: normal; }
+.mrow__p { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.95rem; font-weight: 700;
+  color: var(--orange-deep); background: rgba(255, 125, 3, 0.1); border: 1px solid rgba(255, 125, 3, 0.22);
+  padding: 5px 11px; border-radius: 20px; }
+.mrow:hover { background: rgba(255, 125, 3, 0.045); }
+.mrow:hover .mrow__p { background: var(--orange); border-color: var(--orange); color: #14100a; }
+.mrow__badge { font-style: normal; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--paper); background: var(--navy); padding: 3px 8px; border-radius: 20px; margin-left: 8px; vertical-align: 2px; }
+
+/* ============================================================
+   MENYSIDA (meny.html)
+   ============================================================ */
+.page-hero { background: var(--navy); color: var(--cream); padding: clamp(130px, 15vh, 190px) 0 clamp(48px, 6vw, 80px); text-align: center; position: relative; overflow: hidden; }
+.page-hero h1 { font-family: var(--display); font-size: clamp(2.2rem, 5.4vw, 4rem); text-transform: uppercase; }
+.page-hero .em { color: var(--orange); }
+.page-hero .lead { color: var(--bluegrey); margin: var(--s-4) auto 0; }
+.page-hero .tag { color: var(--orange); justify-content: center; }
+.page-hero .tag::before { display: none; }
+.page-hero .btn { margin-top: var(--s-6); }
+.menypage { position: relative; overflow: hidden; }
+.menypage > .wrap { position: relative; z-index: 1; }
+.menycols { columns: 2; column-gap: clamp(32px, 5vw, 76px); }
+.menyblock { break-inside: avoid; margin-bottom: var(--s-6); }
+.menyblock .menu__cat:first-child { margin-top: 0; }
+.menyfoot { text-align: center; margin-top: clamp(40px, 5vw, 64px); display: grid; justify-items: center; gap: var(--s-4); }
+.menyfoot .note { font-size: var(--fs-sm); color: var(--ink-faint); }
+
+@media (max-width: 960px) {
+  .foodtrio__grid { grid-template-columns: 1fr; max-width: 440px; }
+  .food__img { aspect-ratio: 16 / 10; }
+  .menycols { columns: 1; }
+}
+
+/* neutralisera gamla figcaption-regler (matkort v1) */
+.food figcaption.food__body { position: static; left: auto; bottom: auto; z-index: auto;
+  font-family: var(--sans); font-size: inherit; letter-spacing: normal; text-transform: none;
+  color: var(--ink); text-shadow: none; }
+.food figcaption.food__body::after { content: none; }
+.food::after { content: none; }
+
+/* karta i Hitta hit */
+.kartan { margin-top: clamp(36px, 4.5vw, 64px); border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--line-soft); box-shadow: 0 22px 48px -34px rgba(16, 32, 63, 0.5); }
+.kartan iframe { display: block; width: 100%; height: clamp(280px, 36vw, 420px); border: 0; filter: saturate(0.92) contrast(0.98); }
+.kartan__cta { display: flex; justify-content: center; margin-top: var(--s-5); }
+.mobilebar { gap: var(--s-3); }
+.mobilebar .btn--primary { flex: 2; }
+.mobilebar .btn--ghost { flex: 1; background: rgba(255,255,255,.6); }
+.kontaktsec { position: relative; overflow: hidden; }
+.kontaktsec > .wrap { position: relative; z-index: 1; }
+.menysec { background: #f6f1e7; }
+.orderband { background: linear-gradient(180deg, #eee9de, #dde5f1); }
+.kontaktsec { background: linear-gradient(180deg, #dde5f1, #cddcf0); }
+.foodtrio { background: #f6f1e7; }
+.foot { border-top: 0; }
+
+.orderband, .kontaktsec, .menysec { border-block: 0 !important; }

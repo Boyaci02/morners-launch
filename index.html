@@ -45,7 +45,7 @@
       <a href="#bestall">Beställ</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn btn--primary nav__cta" href="tel:+46735664428">Ring oss</a>
+    <a class="btn btn--primary nav__cta" href="#" data-qopla>Beställ</a>
     <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -56,7 +56,7 @@
   <a href="#om" data-close>Om oss</a>
   <a href="#bestall" data-close>Beställ</a>
   <a href="#kontakt" data-close>Kontakt</a>
-  <a class="btn btn--primary" href="tel:+46735664428">Ring oss · 073-566 44 28</a>
+  <a class="btn btn--primary" href="#" data-qopla>Beställ online</a>
 </div>
 
 <main id="main">
@@ -70,8 +70,8 @@
       <p class="hero__open" data-reveal><span class="tick" aria-hidden="true"></span>Nybakat · Färskt · Riktigt<span class="tick" aria-hidden="true"></span></p>
       <p class="hero__lead" data-reveal>Nybakad pizza, färsk sallad och riktig kebab — gjort ordentligt, varje gång.</p>
       <div class="hero__cta" data-reveal>
-        <a class="btn btn--primary btn--lg" href="#meny">Se menyn</a>
-        <a class="btn btn--ghost btn--lg" href="tel:+46735664428">Ring oss</a>
+        <a class="btn btn--primary btn--lg" href="#" data-qopla>Beställ online <span aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="#meny">Se menyn</a>
       </div>
       <p class="hero__badge" data-reveal>Gulli Petrinis Väg 24, Växjö · Beställ online för avhämtning.</p>
     </div>
@@ -82,27 +82,36 @@
     <div class="wrap">
       <div class="foodtrio__grid" data-stagger>
         <figure class="food" data-reveal>
-          <img src="assets/photos/pizza.jpg" alt="Nybakad pizza med smält ost" loading="lazy" decoding="async">
-          <figcaption>Pizza</figcaption>
+          <div class="food__img"><img src="assets/photos/pizza.jpg" alt="Nybakad pizza med smält ost" loading="lazy" decoding="async"><span class="food__from">från 125 kr</span></div>
+          <figcaption class="food__body">
+            <h3>Pizza</h3>
+            <p>Nybakad i ugnen — från klassiker till husets egna.</p>
+          </figcaption>
         </figure>
         <figure class="food" data-reveal>
-          <img src="assets/photos/sallad.jpg" alt="Färsk sallad med avokado och grönsaker" loading="lazy" decoding="async">
-          <figcaption>Sallad</figcaption>
+          <div class="food__img"><img src="assets/photos/sallad.jpg" alt="Färsk sallad med avokado och grönsaker" loading="lazy" decoding="async"><span class="food__from">från 130 kr</span></div>
+          <figcaption class="food__body">
+            <h3>Sallad</h3>
+            <p>Färska råvaror, rejäla portioner — inte en eftertanke.</p>
+          </figcaption>
         </figure>
         <figure class="food" data-reveal>
-          <img src="assets/photos/kebab.jpg" alt="Grillspett och kebab med tillbehör" loading="lazy" decoding="async">
-          <figcaption>Kebab</figcaption>
+          <div class="food__img"><img src="assets/photos/kebab.jpg" alt="Grillat kebabkött med tillbehör" loading="lazy" decoding="async"><span class="food__from">från 130 kr</span></div>
+          <figcaption class="food__body">
+            <h3>Kebab</h3>
+            <p>Rullar, tallrikar och i bröd — som den ska smaka.</p>
+          </figcaption>
         </figure>
       </div>
     </div>
   </section>
 
   <!-- MENY -->
-  <section class="section" id="meny">
+  <section class="section menysec" id="meny" data-fog>
     <div class="wrap">
       <div class="head center" data-reveal>
         <p class="tag">Meny</p>
-        <h2>Menyn — <span class="em">klassikerna.</span></h2>
+        <h2>Ett urval ur <span class="em">menyn</span></h2>
       </div>
 
       <div class="menukort">
@@ -112,7 +121,7 @@
             <div data-stagger>
               <div class="mrow" data-reveal><span class="mrow__t">Margherita</span><span class="mrow__d">mozzarella</span><span class="mrow__p">125 kr</span></div>
               <div class="mrow" data-reveal><span class="mrow__t">Vesuvio</span><span class="mrow__d">skinka</span><span class="mrow__p">125 kr</span></div>
-              <div class="mrow" data-reveal><span class="mrow__t">Mörners</span><span class="mrow__d">skinka, bacon, kebabkött, kebabsås</span><span class="mrow__p">145 kr</span></div>
+              <div class="mrow" data-reveal><span class="mrow__t">Mörners <i class="mrow__badge">husets</i></span><span class="mrow__d">skinka, bacon, kebabkött, kebabsås</span><span class="mrow__p">145 kr</span></div>
               <div class="mrow" data-reveal><span class="mrow__t">Kebabpizza</span><span class="mrow__d">kebabkött, lök, champinjoner, kebabsås</span><span class="mrow__p">145 kr</span></div>
               <div class="mrow" data-reveal><span class="mrow__t">Lakers Special</span><span class="mrow__d">kebabkött, pommes, kebabsås</span><span class="mrow__p">150 kr</span></div>
             </div>
@@ -130,7 +139,7 @@
         </div>
       </div>
       <div class="menu__more" data-reveal>
-        <a class="btn btn--primary btn--lg" href="#" data-qopla>Se hela menyn &amp; beställ <span aria-hidden="true">→</span></a>
+        <a class="btn btn--primary btn--lg" href="meny.html">Se hela menyn <span aria-hidden="true">→</span></a>
       </div>
       <p class="menu__note" data-reveal>Ett smakprov — hela menyn med alla pizzor, rullar, sallader och tillbehör finns i beställningen.</p>
     </div>
@@ -146,7 +155,7 @@
   </section>
 
   <!-- BESTÄLL -->
-  <section class="section orderband" id="bestall">
+  <section class="section orderband" id="bestall" data-fog>
     <div class="wrap orderband__in">
       <p class="tag" data-reveal>Beställ</p>
       <h2 data-reveal>Hämta på vägen <span class="em">hem.</span></h2>
@@ -159,7 +168,7 @@
   </section>
 
   <!-- KONTAKT -->
-  <section class="section" id="kontakt">
+  <section class="section kontaktsec" id="kontakt" data-fog>
     <div class="wrap">
       <div class="head center" data-reveal>
         <p class="tag">Kontakt</p>
@@ -169,6 +178,12 @@
         <div class="kontakt__item" data-reveal><span class="k">Telefon</span><a href="tel:+46735664428">073-566 44 28</a></div>
         <div class="kontakt__item" data-reveal><span class="k">Adress</span><span class="v">Gulli Petrinis Väg 24, 352 20 Växjö</span></div>
         <div class="kontakt__item" data-reveal><span class="k">Öppettider</span><span class="v">Alla dagar 10:00–21:00</span></div>
+      </div>
+      <div class="kartan" data-reveal>
+        <iframe title="Karta — Mörners, Gulli Petrinis Väg 24, Växjö" src="https://maps.google.com/maps?q=Gulli%20Petrinis%20V%C3%A4g%2024%2C%20352%2020%20V%C3%A4xj%C3%B6&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="kartan__cta" data-reveal>
+        <a class="btn btn--ghost" href="https://maps.google.com/?q=Gulli+Petrinis+V%C3%A4g+24,+352+20+V%C3%A4xj%C3%B6" target="_blank" rel="noopener">Öppna i Google Maps</a>
       </div>
     </div>
   </section>
@@ -185,11 +200,11 @@
 </footer>
 
 <div class="mobilebar" id="mobilebar" aria-hidden="true">
-  <a class="btn btn--primary" href="tel:+46735664428">Ring oss · 073-566 44 28</a>
+  <a class="btn btn--primary" href="#" data-qopla>Beställ online</a>
 </div>
 
 <script src="scripts/main.js"></script>
 <script src="scripts/hero-fog.js"></script>
-<script src="scripts/aw-shader.js"></script>
+<script src="scripts/fog.js"></script>
 </body>
 </html>

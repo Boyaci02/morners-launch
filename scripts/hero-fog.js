@@ -82,11 +82,13 @@ void main(){
   const SCALE = .66;
   function resize(){ const r=host.getBoundingClientRect();
     canvas.width=Math.max(2,Math.round(r.width*SCALE)); canvas.height=Math.max(2,Math.round(r.height*SCALE));
-    gl.viewport(0,0,canvas.width,canvas.height); gl.uniform2f(uRes,canvas.width,canvas.height); }
+    gl.viewport(0,0,canvas.width,canvas.height); gl.uniform2f(uRes,canvas.width,canvas.height);
+    try { draw(); } catch(e){} }
   window.addEventListener('resize', resize, { passive:true });
 
   let raf=0, visible=false; const t0=performance.now();
-  function frame(now){ gl.uniform1f(uT,(now-t0)/1000); gl.drawArrays(gl.TRIANGLES,0,3); raf = visible ? requestAnimationFrame(frame) : 0; }
+  function draw(now){ gl.uniform1f(uT,((now ?? performance.now())-t0)/1000); gl.drawArrays(gl.TRIANGLES,0,3); }
+  function frame(now){ draw(now); raf = visible ? requestAnimationFrame(frame) : 0; }
   function start(){
     new IntersectionObserver(([e])=>{ visible=e.isIntersecting; if(visible&&!raf) raf=requestAnimationFrame(frame); },{rootMargin:'60px'}).observe(host);
     visible = true; raf = requestAnimationFrame(frame);
