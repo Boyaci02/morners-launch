@@ -31,9 +31,9 @@
 { "@context":"https://schema.org","@type":"Restaurant",
   "name":"Mörners",
   "servesCuisine":["Pizza","Salad","Kebab"],
-  "telephone":"+46735664428",
   "address":{"@type":"PostalAddress","streetAddress":"Gulli Petrinis Väg 24","postalCode":"352 20","addressLocality":"Växjö","addressCountry":"SE"},
   "menu":"https://qopla.com/restaurant/morners/qEQ3g3j42O/order",
+  "potentialAction":{"@type":"OrderAction","target":{"@type":"EntryPoint","urlTemplate":"https://qopla.com/restaurant/morners/qEQ3g3j42O/order","inLanguage":"sv-SE","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]},"deliveryMethod":"http://purl.org/goodrelations/v1#DirectPickup"},
   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"10:00","closes":"21:00"}],
   "description":"Nybakad pizza, färsk sallad och riktig kebab i Växjö. Beställ online för avhämtning."
 }
@@ -177,7 +177,6 @@
       <p class="lead" data-reveal>Beställ online för avhämtning — snabbt och enkelt via Qopla.</p>
       <div class="orderband__cta" data-reveal>
         <a class="btn btn--primary btn--lg" href="#" data-qopla>Beställ online <span aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost" href="tel:+46735664428">Ring oss · 073-566 44 28</a>
       </div>
     </div>
   </section>
@@ -190,7 +189,7 @@
         <h2>Hitta <span class="em">hit.</span></h2>
       </div>
       <div class="kontakt" data-stagger>
-        <div class="kontakt__item" data-reveal><span class="k">Telefon</span><a href="tel:+46735664428">073-566 44 28</a></div>
+        <div class="kontakt__item" data-reveal><span class="k">Beställning</span><a href="#" data-qopla>Beställ online</a></div>
         <div class="kontakt__item" data-reveal><span class="k">Adress</span><span class="v">Gulli Petrinis Väg 24, 352 20 Växjö</span></div>
         <div class="kontakt__item" data-reveal><span class="k">Öppettider</span><span class="v">Alla dagar 10:00–21:00</span></div>
       </div>

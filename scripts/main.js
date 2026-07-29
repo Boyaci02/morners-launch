@@ -41,7 +41,7 @@
     } else {
       el.addEventListener('click', (e) => {
         e.preventDefault();
-        alert('Onlinebeställning öppnar i augusti — ring oss så länge: 073-566 44 28');
+        alert('Onlinebeställningen är tillfälligt otillgänglig — försök igen om en stund.');
       });
     }
   });

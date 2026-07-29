@@ -386,3 +386,6 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 
 .orderband, .kontaktsec, .menysec { border-block: 0 !important; }
 .hero__h1 { margin: 0; line-height: 0; }
+
+/* mobilbar: enbart bestäl­lning */
+.mobilebar .btn--primary { flex: 1; }
