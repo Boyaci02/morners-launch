@@ -1,0 +1,64 @@
+{
+  "slug": "Morners",
+  "demo": false,
+  "pass": false,
+  "checkedPages": 2,
+  "counts": {
+    "CRITICAL": 4,
+    "HIGH": 2,
+    "MEDIUM": 2,
+    "LOW": 2
+  },
+  "findings": [
+    {
+      "severity": "CRITICAL",
+      "page": "/index.html",
+      "detail": "Loads fonts from https://fonts.googleapis.com — sends every EU visitor's IP to Google before consent. Self-host (see _library/compliance/fonts.md)"
+    },
+    {
+      "severity": "CRITICAL",
+      "page": "/index.html",
+      "detail": "Loads fonts from https://fonts.gstatic.com — sends every EU visitor's IP to Google before consent. Self-host (see _library/compliance/fonts.md)"
+    },
+    {
+      "severity": "CRITICAL",
+      "page": "/meny.html",
+      "detail": "Loads fonts from https://fonts.googleapis.com — sends every EU visitor's IP to Google before consent. Self-host (see _library/compliance/fonts.md)"
+    },
+    {
+      "severity": "CRITICAL",
+      "page": "/meny.html",
+      "detail": "Loads fonts from https://fonts.gstatic.com — sends every EU visitor's IP to Google before consent. Self-host (see _library/compliance/fonts.md)"
+    },
+    {
+      "severity": "HIGH",
+      "page": "BUILD-MANIFEST.md",
+      "detail": "No build manifest — copy _pipeline/MANIFEST-TEMPLATE.md and fill it. Without it there is no record of which library parts were used or which skills ran."
+    },
+    {
+      "severity": "HIGH",
+      "page": "vercel.json",
+      "detail": "No vercel.json — no security headers (copy _library/compliance/vercel.json)"
+    },
+    {
+      "severity": "MEDIUM",
+      "page": "library conformance",
+      "detail": "Library components absent by class name: faq (faq-accordion.md), services (service-list.md), trust (trust-band.md), sticky-cta (sticky-cta.md). Either use the library part or record in the handover why a bespoke one was needed."
+    },
+    {
+      "severity": "MEDIUM",
+      "page": "styles/app.css",
+      "detail": "26 hard-coded hex colours in app.css (#001739, #ff7d03, #f4efe6, #f6f1e7…). Components may only use tokens — see _library/foundations/tokens.css"
+    },
+    {
+      "severity": "LOW",
+      "page": "/index.html",
+      "detail": "Heading level jumps h1 → h3"
+    },
+    {
+      "severity": "LOW",
+      "page": "/meny.html",
+      "detail": "Missing og:image:alt"
+    }
+  ]
+}

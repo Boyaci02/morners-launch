@@ -50,6 +50,8 @@
 </head>
 
 <body>
+
+
 <a class="skip" href="#main">Hoppa till innehåll</a>
 
 <!-- NAV -->
@@ -218,6 +220,31 @@
 <div class="mobilebar" id="mobilebar" aria-hidden="true">
   <a class="btn btn--primary" href="#" data-qopla>Beställ online</a>
 </div>
+
+  <!-- Öppningsavisering. Stängs med krysset, Escape eller klick utanför.
+       <dialog> ger fokusfälla + Escape gratis — ingen egen tangentbordskod. -->
+  <dialog class="oppnar" id="oppnar" aria-labelledby="oppnarRubrik" tabindex="-1" autofocus>
+    <form method="dialog" class="oppnar__stang">
+      <button class="oppnar__x" value="stang" aria-label="Stäng meddelandet">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </form>
+    <div class="oppnar__in">
+      <h2 class="oppnar__rubrik" id="oppnarRubrik">Vi öppnar</h2>
+      <p class="oppnar__datum"><time datetime="2026-08-10">10/8</time></p>
+      <hr class="oppnar__linje" aria-hidden="true">
+      <p class="oppnar__text">
+        Nybakad pizza, färsk sallad och riktig kebab
+        på Gulli Petrinis Väg 24 i Växjö.
+      </p>
+      <form method="dialog">
+        <button class="btn btn--primary btn--lg" value="meny">Se menyn <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+  </dialog>
 
 <script src="scripts/main.js"></script>
 <script src="scripts/hero-fog.js"></script>

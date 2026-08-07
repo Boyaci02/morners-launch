@@ -185,3 +185,39 @@
   // year
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
+
+/* Öppningsavisering — visas en gång, kommer ihåg att den stängts.
+   localStorage, inte cookie: en funktionell preferens som aldrig lämnar
+   webbläsaren och som inte kräver samtycke. */
+(function oppnarAvisering() {
+  var d = document.getElementById('oppnar');
+  if (!d || !d.showModal) return;
+  var NYCKEL = 'morners-oppnar-10-8';
+  try { if (localStorage.getItem(NYCKEL)) return; } catch (e) {}
+
+  setTimeout(function () {
+    if (d.open) return;
+    d.showModal();
+    // showModal() focuses the first focusable child, which lights the close
+    // cross with a focus ring the instant the dialog appears. Move focus to
+    // the dialog itself: Escape and the focus trap still work, nothing looks
+    // pressed. The `autofocus` attribute alone is not reliably honoured here.
+    d.focus();
+  }, 700);
+
+  // Klick utanför kortet stänger. <dialog> ger Escape och fokusfälla gratis.
+  d.addEventListener('click', function (e) {
+    var r = d.getBoundingClientRect();
+    var utanfor = e.clientX < r.left || e.clientX > r.right ||
+                  e.clientY < r.top  || e.clientY > r.bottom;
+    if (utanfor) d.close('utanfor');
+  });
+
+  d.addEventListener('close', function () {
+    try { localStorage.setItem(NYCKEL, '1'); } catch (e) {}
+    if (d.returnValue === 'meny') {
+      var meny = document.getElementById('meny');
+      if (meny) meny.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+})();

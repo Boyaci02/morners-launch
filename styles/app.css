@@ -392,3 +392,125 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 /* mattrion ingår i den sammanhängande dimman */
 .foodtrio { position: relative; overflow: hidden; }
 .foodtrio > .wrap { position: relative; z-index: 1; }
+
+/* ---------- ÖPPNINGSAVISERING ----------
+   Ljuskällan är ugnen. Den ligger under kortets underkant, så värmen stiger
+   uppåt genom navyn och dör ut innan den når rubriken. Allt i kortet lyder
+   den riktningen: datumet sitter i glöden, knappen är det hetaste, rubriken
+   står i det svala ovanför. Se _library/foundations/light-and-physics.md.   */
+.oppnar {
+  border: 0; padding: 0; margin: auto; position: relative; isolation: isolate;
+  color: var(--cream);
+  background: var(--navy);
+  inline-size: min(90vw, 680px);
+  block-size: min(78svh, 660px);
+  border-radius: 12px;
+  box-shadow: 0 46px 100px -34px rgba(0, 6, 20, .85);
+  overflow: hidden;
+}
+.oppnar:focus { outline: none; }
+
+/* Kall natthimmel uppe, kolsvart nere — underlaget som glöden ska lysa in i. */
+.oppnar::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(168deg in oklab,
+    var(--navy-3) 0%, var(--navy) 46%, #00050f 100%);
+}
+/* Ugnen. Ellips, ursprunget under kortet, låg alpha, lång utklingning —
+   samma grammatik som röken i cryptoshisha, annan fysik: det här är hetta. */
+.oppnar::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 88% 62% at 50% 108% in oklab,
+      oklch(from var(--orange) l c h / .40) 0%,
+      oklch(from var(--orange) l c h / .16) 34%,
+      oklch(from var(--orange) l c h / .05) 58%,
+      transparent 80%),
+    radial-gradient(ellipse 130% 26% at 50% 102% in oklab,
+      oklch(from var(--orange-bri) l c h / .34) 0%, transparent 62%);
+}
+
+.oppnar::backdrop {
+  background: rgba(0, 9, 24, .74);
+  backdrop-filter: blur(10px) saturate(.68);
+  -webkit-backdrop-filter: blur(10px) saturate(.68);
+}
+
+.oppnar__in {
+  position: relative; block-size: 100%;
+  display: grid; align-content: center; justify-items: center;
+  gap: clamp(14px, 2.2vh, 26px);
+  padding: clamp(46px, 8vw, 84px) clamp(26px, 5vw, 60px) clamp(30px, 5vw, 52px);
+  text-align: center;
+}
+
+/* Rubriken står ovanför värmen och är därför sval. */
+.oppnar__rubrik {
+  font-family: var(--display); font-weight: 400; color: var(--cream);
+  font-size: clamp(1.5rem, 4vw, 2.15rem); letter-spacing: .015em;
+  line-height: 1.2;  /* Archivo Black kapar Å/Ä/Ö under ~1.15 */
+  margin: 0;
+}
+
+/* Datumet sitter i glöden. Skuggan är värme som sprider sig i luften,
+   inte en drop shadow: ingen offset, bara spridning. */
+.oppnar__datum {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(4rem, 15vw, 6rem);
+  line-height: 1.05; letter-spacing: -.025em; margin: 0;
+  background: linear-gradient(178deg in oklab, var(--orange-bri), var(--orange) 62%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 34px oklch(from var(--orange) l c h / .34));
+}
+.oppnar__datum time { font: inherit; color: inherit; }
+
+/* En glödande hårlinje under datumet — ugnsspringan. Ljusast i mitten. */
+.oppnar__linje {
+  inline-size: min(58%, 260px); block-size: 1px; border: 0; margin: 0;
+  background: linear-gradient(90deg, transparent,
+    oklch(from var(--orange) l c h / .85) 50%, transparent);
+}
+
+.oppnar__text {
+  margin: 0; max-inline-size: 32ch;
+  color: var(--cream-soft); font-size: var(--fs-lead); line-height: 1.62;
+}
+.oppnar__in form { margin-block-start: clamp(4px, 1vh, 12px); }
+/* Knappen står närmast ugnen och är det hetaste på kortet. */
+.oppnar__in .btn--primary { box-shadow: 0 10px 40px -10px oklch(from var(--orange) l c h / .5); }
+
+.oppnar__stang { position: absolute; inset-block-start: 0; inset-inline-end: 0; z-index: 2; }
+.oppnar__x {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  color: var(--cream-faint); padding: 18px; line-height: 0;
+  transition: color .15s var(--ease);
+}
+.oppnar__x:hover { color: var(--orange); }
+.oppnar__x:focus-visible {
+  color: var(--orange); outline: 2px solid var(--orange);
+  outline-offset: -6px; border-radius: 6px;
+}
+
+/* Ett enda författat ögonblick: ugnen tänds.
+   Kortet stiger (320ms), glöden blommar efter den (60ms förskjutning),
+   datumet sätter sig sist. Ease-out hela vägen, inget studsar. */
+.oppnar[open]           { animation: kortIn .34s cubic-bezier(.16,1,.3,1) both; }
+.oppnar[open]::after    { animation: ugnTand .62s cubic-bezier(.22,1,.36,1) .06s both; }
+.oppnar[open]::backdrop { animation: bakgrundIn .34s cubic-bezier(.16,1,.3,1) both; }
+.oppnar[open] .oppnar__datum { animation: datumIn .44s cubic-bezier(.22,1,.36,1) .12s both; }
+.oppnar[open] .oppnar__linje { animation: linjeIn .5s cubic-bezier(.22,1,.36,1) .22s both; }
+
+@keyframes kortIn     { from { opacity: 0; transform: translateY(16px) scale(.992); } }
+@keyframes bakgrundIn { from { opacity: 0; } }
+@keyframes ugnTand    { from { opacity: 0; transform: translateY(16px); } }
+@keyframes datumIn    { from { opacity: 0; transform: translateY(10px); } }
+@keyframes linjeIn    { from { opacity: 0; transform: scaleX(.3); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .oppnar[open], .oppnar[open]::after, .oppnar[open]::backdrop,
+  .oppnar[open] .oppnar__datum, .oppnar[open] .oppnar__linje { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .oppnar { inline-size: 92vw; block-size: min(78svh, 580px); border-radius: 10px; }
+}
