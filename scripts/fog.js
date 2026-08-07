@@ -5,7 +5,19 @@
   if (reduce) return;
   const hosts = [...document.querySelectorAll('[data-fog]')];
   if (!hosts.length) return;
-  const REF = 1200; // px per brusenhet — samma för alla sektioner
+  /* px per brusenhet. Var en fast konstant, vilket gjorde att loberna fick
+     samma fysiska storlek på alla skärmar — och därmed att en 390 px bred
+     mobil bara fick plats med ~27 % av den variation en 1440 px desktop
+     visade. Resultatet såg inzoomat och nästan enfärgat ut.
+
+     Nu skalas referensen med bredden, så antalet lober tvärs över skärmen
+     blir ungefär detsamma överallt. Klampad så att den varken blir grynig
+     på små telefoner eller platt på ultrabreda skärmar. Samma REF används
+     för både x och y, så lobernas proportioner behålls — de blir bara
+     mindre i px där skärmen är smalare, vilket är precis meningen. */
+  const REF_BASE = 1200, REF_AT = 1440;
+  const refFor = (w) => Math.max(520, Math.min(1200, REF_BASE * (w / REF_AT)));
+  let REF = refFor(window.innerWidth);
 
   const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
   const FRAG = `
@@ -93,8 +105,14 @@ void main(){
     inst.gl.uniform1f(inst.u('u_t'), ((now ?? performance.now()) - inst.t0) / 1000);
     inst.gl.drawArrays(inst.gl.TRIANGLES, 0, 3);
   }
+  REF = refFor(window.innerWidth);
   layout();
-  window.addEventListener('resize', layout, { passive: true });
+  /* REF måste räknas om FÖRE varje layout, inte en gång bredvid lyssnaren —
+     annars behåller en rotation från porträtt till landskap mobilens skala. */
+  window.addEventListener('resize', () => {
+    REF = refFor(window.innerWidth);
+    layout();
+  }, { passive: true });
 
   instances.forEach((inst) => {
     let raf = 0, visible = false;

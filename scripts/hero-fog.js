@@ -47,13 +47,20 @@ void main(){
   vec3 tex = texture2D(u_tex, st).rgb;
   vec3 invd = vec3(1.) - tex;
 
-  /* organiska avslöjande-former */
-  vec2 q = uv * vec2(ra, 1.);
+  /* Organiska avslöjande-former.
+     Brusfältet skalades med ra, så en smal skärm såg bara en remsa av
+     mönstret (0..0.46 istället för 0..1.6) och därmed knappt någon
+     fönsterkant alls. Vi golvar bredden så mobilen får ett jämförbart
+     utsnitt, och öppnar tröskeln en aning där — mer sann färg syns. */
+  float qw = max(ra, 0.95);
+  vec2 q = uv * vec2(qw, 1.);
   float t = u_t * .04;
   vec2 w1 = vec2(fbm(q*1.1 + t), fbm(q*1.1 - t*.7));
   float n = fbm(q*1.4 + 2.8*w1 - t*.35);
-  float m = smoothstep(.42, .68, n);            /* stora mjuka fönster */
-  float rim = smoothstep(.38,.46,n) - smoothstep(.46,.56,n); /* varm kant */
+  float lo = mix(.42, .355, narrow);
+  float hi = mix(.68, .625, narrow);
+  float m = smoothstep(lo, hi, n);              /* stora mjuka fönster */
+  float rim = smoothstep(lo - .04, lo + .04, n) - smoothstep(lo + .04, lo + .14, n);
 
   vec3 col = mix(invd, tex * vec3(1.06, 1.0, .94), m);   /* sanna färger i formerna */
   col += rim * vec3(1.0, .49, .012) * .25;               /* orange glödkant */
