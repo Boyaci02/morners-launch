@@ -28,9 +28,22 @@ void main(){
   vec2 uv = vec2(vUv.x, 1. - vUv.y);
   float ra = u_res.x / u_res.y, ia = u_img.x / u_img.y;
   vec2 st = uv - .5;
-  if (ra > ia) { st.y *= ia / ra; } else { st.x *= ra / ia; }
+  if (ra > ia) {
+    st.y *= ia / ra;
+  } else {
+    /* Strikt cover mot en hög portrait-yta blir brutalt: en 390x844-skärm
+       mot en 2400x1600-bild ger ra/ia = 0.31, alltså bara mittersta 31 % av
+       bredden — en 3,2x inzoomning rakt in i den ljusa kondensen, som efter
+       invert blir vitgrå. Bilden är en abstrakt textur, inte ett motiv, så
+       vi klampar hur snävt den får beskäras och tar hellre en aning
+       horisontell hoptryckning än att tappa hela bildens färg. */
+    st.x *= max(ra / ia, 0.46);
+  }
   st += .5;
-  st.y = st.y * .9 + .03; /* fokus något uppåt som object-position 40% */
+  /* Vertikal fokusförskjutning skalas ned på smala skärmar — där finns
+     redan för lite bild kvar för att flytta blicken uppåt. */
+  float narrow = smoothstep(1.0, 0.55, ra);
+  st.y = st.y * mix(.9, 1.0, narrow) + mix(.03, 0.0, narrow);
   vec3 tex = texture2D(u_tex, st).rgb;
   vec3 invd = vec3(1.) - tex;
 
