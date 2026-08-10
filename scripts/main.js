@@ -26,10 +26,14 @@
     burger.classList.toggle('open', open);
     drawer.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Stäng meny' : 'Öppna meny');
+    // Håll headern (logga + X) ovanpå den öppna menyn — annars går den inte att stänga
+    document.body.classList.toggle('drawer-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   };
   burger?.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
   drawer?.querySelectorAll('[data-close]').forEach((a) => a.addEventListener('click', () => setDrawer(false)));
+  document.querySelector('.brand')?.addEventListener('click', () => setDrawer(false));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setDrawer(false); });
 
   // qopla placeholder → real link when QOPLA_URL is set

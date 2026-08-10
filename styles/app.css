@@ -142,6 +142,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; l
   transition: opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
 }
 .drawer.open { opacity: 1; visibility: visible; transform: translateY(0); }
+/* Öppen mobilmeny: headern (logga + X-knapp) ska ligga ÖVER menyn och alltid synas,
+   även om headern var scroll-gömd eller i ljust "scrolled"-läge. */
+body.drawer-open .nav { z-index: 26; transform: none; background: transparent; box-shadow: none; backdrop-filter: none; color: var(--cream); }
+body.drawer-open .nav .nav__links { display: none; }
 .drawer a { font-family: var(--display); font-size: clamp(1.5rem, 6.5vw, 2.1rem); text-transform: uppercase; }
 .drawer a:hover { color: var(--orange); }
 .drawer .btn { font-family: var(--sans); font-size: var(--fs-sm); margin-top: var(--s-4); text-transform: none; }
