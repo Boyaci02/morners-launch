@@ -192,7 +192,7 @@
 (function oppnarAvisering() {
   var d = document.getElementById('oppnar');
   if (!d || !d.showModal) return;
-  var NYCKEL = 'morners-oppnar-10-8';
+  var NYCKEL = 'morners-oppnat-nu';
   try { if (localStorage.getItem(NYCKEL)) return; } catch (e) {}
 
   setTimeout(function () {
