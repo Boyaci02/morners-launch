@@ -126,13 +126,13 @@
   // öppet nu-badge — beräknas ur riktiga öppettider
   // [öppnar, stänger] i minuter; stänger > 1440 = efter midnatt
   const HOURS = [
-    [12 * 60, 23 * 60],          // sön
-    [11 * 60 + 30, 23 * 60],     // mån
-    [11 * 60 + 30, 23 * 60],     // tis
-    [11 * 60 + 30, 24 * 60],     // ons
-    [11 * 60 + 30, 24 * 60],     // tor
-    [11 * 60 + 30, 25 * 60 + 30],// fre (01:30)
-    [11 * 60 + 30, 25 * 60 + 30],// lör (01:30)
+    [11 * 60, 21 * 60],          // sön
+    [11 * 60, 21 * 60],          // mån
+    [11 * 60, 21 * 60],          // tis
+    [11 * 60, 21 * 60],          // ons
+    [11 * 60, 21 * 60],          // tor
+    [11 * 60, 21 * 60],          // fre
+    [11 * 60, 21 * 60],          // lör
   ];
   const badge = document.getElementById('openBadge');
   const openText = document.getElementById('openText');

@@ -5,7 +5,7 @@ Mörners är en pizzeria i Växjö som serverar nybakad pizza, färska sallader 
 
 ## Kontakt & plats
 - Adress: Smedjegatan 28, 352 46 Växjö
-- Öppettider: alla dagar 10:00–21:00
+- Öppettider: alla dagar 11:00–21:00
 - Beställ online: https://qopla.com/restaurant/morners/qEQ3g3j42O/order
 - Webb: https://morners-launch.vercel.app
 
